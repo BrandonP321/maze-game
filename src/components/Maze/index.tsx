@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect, useRef, useCallback } from 'react';
+import React, { ReactElement, useState, useEffect, useRef } from 'react';
 import { transpileModule } from 'typescript';
 import './index.css';
 
@@ -69,7 +69,8 @@ export default function Maze({ }: Props): ReactElement {
             nums.push(cellObj);
         }
 
-        createSimplePath(nums)
+        // createSimplePath(nums)
+        createRandomSimplePath(nums)
 
         setMazeCells(nums)
     }
@@ -88,6 +89,39 @@ export default function Maze({ }: Props): ReactElement {
                 if (!cell.isTopRow) cell.canMoveUp = true;
             }
         })
+    }
+
+    const createRandomSimplePath = (cells: any[]) => {
+        const totalMoves = []
+        // push total number of right and down moves needed to reach end
+        for (let i = 0; i < mazeWidth - 1; i++) {
+            totalMoves.push('right');
+            totalMoves.push('down')
+        }
+
+        let currentCellIndex = 0;
+
+        while (totalMoves.length > 0) {
+            const currentCell = cells[currentCellIndex];
+
+            const randomIndex = Math.floor(Math.random() * totalMoves.length)
+
+            const move = totalMoves[randomIndex]
+            totalMoves.splice(randomIndex, 1);
+
+            switch (move) {
+                case 'right':
+                    currentCell.canMoveRight = true;
+                    currentCellIndex += 1;
+                    cells[currentCellIndex].canMoveLeft = true;
+                    break;
+                case 'down':
+                    currentCell.canMoveDown = true;
+                    currentCellIndex += mazeWidth;
+                    cells[currentCellIndex].canMoveUp = true;
+                    break;
+            }
+        }
     }
 
     const handleKeyPress = (e: KeyboardEvent) => {
