@@ -27,7 +27,13 @@ interface cellProperties extends cellPositionProperties {
 
 export default function Maze({ }: Props): ReactElement {
     const [mazeWidth, setMazeWidth] = useState<number>(10); // height is same as width
-    const [mazeCells, setMazeCells] = useState<any[]>([]);
+    const [mazeCells, setMazeCellsState] = useState<any[]>([]);
+    const mazeCellsRef = useRef<any[]>([])
+    const setMazeCells = (data: any) => {
+        mazeCellsRef.current = data;
+        setMazeCellsState(data);
+    }
+
     const [playerLocation, setPlayerLocationState] = useState<{ row: number; col: number }>({ row: 1, col: 1 })
     const playerLocationRef = useRef<{ row: number; col: number }>({ row: 1, col: 1 })
     const setPlayerLocation = (data: { row: number, col: number }) => {
@@ -108,26 +114,39 @@ export default function Maze({ }: Props): ReactElement {
         }
     }
 
+    const getCellIndexByLocation = (location: { row: number, col: number }) => {
+        const cellIndex = (location.row - 1) * mazeWidth + location.col - 1
+        return mazeCellsRef.current[cellIndex];
+    }
+
     const moveUp = () => {
-        if (playerLocationRef.current.row === 1) return
+        const cell = getCellIndexByLocation(playerLocationRef.current)
+
+        if (playerLocationRef.current.row === 1 || !cell.canMoveUp) return
 
         setPlayerLocation({ ...playerLocationRef.current, row: playerLocationRef.current.row - 1 })
     }
 
     const moveRight = () => {
-        if (playerLocationRef.current.col >= mazeWidth) return
+        const cell = getCellIndexByLocation(playerLocationRef.current)
+
+        if (playerLocationRef.current.col >= mazeWidth || !cell.canMoveRight) return
 
         setPlayerLocation({ ...playerLocationRef.current, col: playerLocationRef.current.col + 1 })
     }
 
     const moveLeft = () => {
-        if (playerLocationRef.current.col === 1) return
+        const cell = getCellIndexByLocation(playerLocationRef.current)
+
+        if (playerLocationRef.current.col === 1 || !cell.canMoveLeft) return
 
         setPlayerLocation({ ...playerLocationRef.current, col: playerLocationRef.current.col - 1 })
     }
 
     const moveDown = () => {
-        if (playerLocationRef.current.row >= mazeWidth) return
+        const cell = getCellIndexByLocation(playerLocationRef.current)
+
+        if (playerLocationRef.current.row >= mazeWidth || !cell.canMoveDown) return
 
         setPlayerLocation({ ...playerLocationRef.current, row: playerLocationRef.current.row + 1 })
     }
