@@ -67,4 +67,20 @@
 .maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.can-move-left {
   border-left: none !important;
 }
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .player-wrapper {
+  position: absolute;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .player-wrapper .player {
+  width: 50%;
+  height: 50%;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 /*# sourceMappingURL=index.css.map */
