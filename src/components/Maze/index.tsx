@@ -344,7 +344,7 @@ export default function Maze({ }: Props): ReactElement {
             // if there are no possible moves
             if (nextMoves.length === 0) {
                 // move backwards in array of visited cells
-                currentIndex = visitedCells.pop();
+                currentIndex = visitedCells.shift();
                 loopLimit++
                 continue
             }
