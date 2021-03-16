@@ -71,7 +71,8 @@ export default function Maze({ }: Props): ReactElement {
 
         // createSimplePath(nums)
         // createRandomSimplePath(nums)
-        createSimpleLeftAndUpPath(nums);
+        // createSimpleLeftAndUpPath(nums);
+        createPathWithoutVisitingCellsTwice(nums);
 
         setMazeCells(nums)
     }
@@ -171,6 +172,87 @@ export default function Maze({ }: Props): ReactElement {
                     totalMoves.push('right')
                     break;
             }
+        }
+    }
+
+    // this path avoids visiting the same cell twice
+    const createPathWithoutVisitingCellsTwice = (cells: any[]) => {
+        const validMoves = ['up', 'down', 'left', 'right'];
+
+        const remainingMoves = {
+            right: mazeWidth - 1,
+            down: mazeWidth - 1,
+            left: 0,
+            top: 0
+        }
+
+
+        let currentIndex = 0;
+
+        // iterate over cells' upper limit of all cells minus start and end
+        for (let i = 0; i < (mazeWidth ** 2 - 2); i++) {
+            const nextMoves = [] // valid moves for each iteration
+            let currentCell = cells[currentIndex]
+            // console.log(currentCell)
+
+            // for each valid move (up down left and right) check if the move is valid
+            for (let move of validMoves) {
+                let nextCell = null;
+
+                switch (move) {
+                    case 'up':
+                        if (!currentCell.isTopRow) nextCell = cells[currentIndex - mazeWidth];
+                        break;
+                    case 'right':
+                        if (!currentCell.isRightCol) nextCell = cells[currentIndex + 1];
+                        break;
+                    case 'down':
+                        if (!currentCell.isBottomRow) nextCell = cells[currentIndex + mazeWidth];
+                        break;
+                    case 'left':
+                        if (!currentCell.isLeftCol) nextCell = cells[currentIndex - 1];
+                        break;
+                }
+
+                // if there is a cell in that direction that hasn't been visited
+                if (nextCell && !nextCell.hasBeenVisited) {
+                    // add that direction as a valid next move
+                    nextMoves.push(move);
+                }
+            }
+
+            // randomly choose one of the valid directions to move
+            const randomInt = Math.floor(Math.random() * nextMoves.length)
+            const randomMove = nextMoves[randomInt];
+            if (nextMoves.length > 0) {
+                // update cell's direction properties and move on to that cell
+                switch (randomMove) {
+                    case 'up':
+                        currentCell.canMoveUp = true;
+                        currentIndex -= mazeWidth;
+                        console.log(currentIndex)
+                        cells[currentIndex].canMoveDown = true;
+                        break;
+                    case 'right':
+                        currentCell.canMoveRight = true;
+                        currentIndex += 1;
+                        cells[currentIndex].canMoveLeft = true;
+                        break;
+                    case 'down':
+                        currentCell.canMoveDown = true;
+                        currentIndex += mazeWidth;
+                        cells[currentIndex].canMoveUp = true;
+                        break;
+                    case 'left':
+                        currentCell.canMoveLeft = true;
+                        currentIndex -= 1;
+                        cells[currentIndex].canMoveRight = true;
+                        break;
+                }
+            }
+
+            currentCell.hasBeenVisited = true;
+            console.log('iteration over')
         }
     }
 
