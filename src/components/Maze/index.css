@@ -1,0 +1,70 @@
+.maze-aspect-ratio-wrapper {
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer {
+  padding-top: 100%;
+  border: 2px solid black;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell {
+  background-color: #bbb;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.right-col {
+  border-right: none !important;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.bottom-row {
+  border-bottom: none;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.start {
+  background-color: green;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.end {
+  background-color: red;
+  border: none !important;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.can-move-up {
+  border-top: none !important;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.can-move-right {
+  border-right: none !important;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.can-move-down {
+  border-bottom: none !important;
+}
+
+.maze-aspect-ratio-wrapper .maze-wrapper-outer .maze-wrapper-inner .maze-cell.can-move-left {
+  border-left: none !important;
+}
+/*# sourceMappingURL=index.css.map */

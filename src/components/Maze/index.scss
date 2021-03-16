@@ -1,0 +1,75 @@
+
+.maze-aspect-ratio-wrapper {
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .maze-wrapper-outer {    
+        padding-top: 100%;
+        border: 2px solid black;
+
+        box-sizing: border-box;
+    
+        .maze-wrapper-inner {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            display: flex;
+            flex-wrap: wrap;
+            // border: 1px solid black;
+    
+            .maze-cell {
+                // width: 5%;
+                // height: calc((100% + 2px) / 10);
+                // height: 5%;
+                background-color: #bbb;
+                box-sizing: border-box;
+                border-bottom: 2px solid black;
+                border-right: 2px solid black;
+
+                &.right-col {
+                    // background-color: salmon;
+                    border-right: none !important;
+                }
+
+                &.bottom-row {
+                    // background-color: salmon;
+                    border-bottom: none;
+                }
+
+                &.start {
+                    background-color: green;
+                }
+
+                &.end {
+                    background-color: red;
+                    border: none !important;
+                }
+
+                &.can-move-up {
+                    border-top: none !important;
+                }
+
+                &.can-move-right {
+                    border-right: none !important;
+                }
+
+                &.can-move-down {
+                    border-bottom: none !important;
+                }
+
+                &.can-move-left {
+                    border-left: none !important;
+                }
+            }
+        }
+    }
+}
+
+// body {
+//     background-color: black;
+// }
