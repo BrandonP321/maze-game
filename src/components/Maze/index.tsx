@@ -70,7 +70,8 @@ export default function Maze({ }: Props): ReactElement {
         }
 
         // createSimplePath(nums)
-        createRandomSimplePath(nums)
+        // createRandomSimplePath(nums)
+        createSimpleLeftAndUpPath(nums);
 
         setMazeCells(nums)
     }
@@ -119,6 +120,55 @@ export default function Maze({ }: Props): ReactElement {
                     currentCell.canMoveDown = true;
                     currentCellIndex += mazeWidth;
                     cells[currentCellIndex].canMoveUp = true;
+                    break;
+            }
+        }
+    }
+
+    // implements left and up moves but won't likely reach end
+    const createSimpleLeftAndUpPath = (cells: any[]) => {
+        const totalMoves = []
+        // push total number of right and down moves needed to reach end
+        for (let i = 0; i < mazeWidth - 1; i++) {
+            totalMoves.push('right');
+            totalMoves.push('down')
+        }
+        console.log(totalMoves)
+
+        let currentCellIndex = 0;
+
+        for (let i = 0; i < (mazeWidth ** 2 - 2); i++) {
+            const currentCell = cells[currentCellIndex];
+
+            const randomIndex = Math.floor(Math.random() * totalMoves.length)
+
+            const move = totalMoves[randomIndex]
+            totalMoves.splice(randomIndex, 1);
+
+            switch (move) {
+                case 'right':
+                    currentCell.canMoveRight = true;
+                    currentCellIndex += 1;
+                    cells[currentCellIndex].canMoveLeft = true;
+                    totalMoves.push('left') // push opposite move to array of moves
+                    break;
+                case 'down':
+                    currentCell.canMoveDown = true;
+                    currentCellIndex += mazeWidth;
+                    cells[currentCellIndex].canMoveUp = true;
+                    totalMoves.push('up')
+                    break;
+                case 'up':
+                    currentCell.canMoveUp = true;
+                    currentCellIndex -= mazeWidth;
+                    cells[currentCellIndex].canMoveDown = true;
+                    totalMoves.push('down')
+                    break;
+                case 'left':
+                    currentCell.canMoveLeft = true;
+                    currentCellIndex -= 1;
+                    cells[currentCellIndex].canMoveRight = true;
+                    totalMoves.push('right')
                     break;
             }
         }
