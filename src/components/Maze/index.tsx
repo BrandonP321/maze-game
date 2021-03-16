@@ -26,7 +26,7 @@ interface cellProperties extends cellPositionProperties {
 }
 
 export default function Maze({ }: Props): ReactElement {
-    const [mazeWidth, setMazeWidth] = useState<number>(10); // height is same as width
+    const [mazeWidth, setMazeWidth] = useState<number>(20); // height is same as width
     const [mazeCells, setMazeCellsState] = useState<any[]>([]);
     const mazeCellsRef = useRef<any[]>([])
     const setMazeCells = (data: any) => {
@@ -193,7 +193,6 @@ export default function Maze({ }: Props): ReactElement {
         for (let i = 0; i < (mazeWidth ** 2 - 2); i++) {
             const nextMoves = [] // valid moves for each iteration
             let currentCell = cells[currentIndex]
-            // console.log(currentCell)
 
             // for each valid move (up down left and right) check if the move is valid
             for (let move of validMoves) {
@@ -224,31 +223,33 @@ export default function Maze({ }: Props): ReactElement {
             // randomly choose one of the valid directions to move
             const randomInt = Math.floor(Math.random() * nextMoves.length)
             const randomMove = nextMoves[randomInt];
-            if (nextMoves.length > 0) {
-                // update cell's direction properties and move on to that cell
-                switch (randomMove) {
-                    case 'up':
-                        currentCell.canMoveUp = true;
-                        currentIndex -= mazeWidth;
-                        console.log(currentIndex)
-                        cells[currentIndex].canMoveDown = true;
-                        break;
-                    case 'right':
-                        currentCell.canMoveRight = true;
-                        currentIndex += 1;
-                        cells[currentIndex].canMoveLeft = true;
-                        break;
-                    case 'down':
-                        currentCell.canMoveDown = true;
-                        currentIndex += mazeWidth;
-                        cells[currentIndex].canMoveUp = true;
-                        break;
-                    case 'left':
-                        currentCell.canMoveLeft = true;
-                        currentIndex -= 1;
-                        cells[currentIndex].canMoveRight = true;
-                        break;
-                }
+
+
+            // if there are no possible moves, break out of for loop since there is nowhere left to go
+            if (nextMoves.length === 0) break;
+
+            // update cell's direction properties and move on to that cell
+            switch (randomMove) {
+                case 'up':
+                    currentCell.canMoveUp = true;
+                    currentIndex -= mazeWidth;
+                    cells[currentIndex].canMoveDown = true;
+                    break;
+                case 'right':
+                    currentCell.canMoveRight = true;
+                    currentIndex += 1;
+                    cells[currentIndex].canMoveLeft = true;
+                    break;
+                case 'down':
+                    currentCell.canMoveDown = true;
+                    currentIndex += mazeWidth;
+                    cells[currentIndex].canMoveUp = true;
+                    break;
+                case 'left':
+                    currentCell.canMoveLeft = true;
+                    currentIndex -= 1;
+                    cells[currentIndex].canMoveRight = true;
+                    break;
             }
 
             currentCell.hasBeenVisited = true;
