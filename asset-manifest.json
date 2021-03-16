@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/max-game/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/max-game/static/js/main.3b482c50.chunk.js",
+    "main.js.map": "/max-game/static/js/main.3b482c50.chunk.js.map",
+    "runtime-main.js": "/max-game/static/js/runtime-main.bd2e79cb.js",
+    "runtime-main.js.map": "/max-game/static/js/runtime-main.bd2e79cb.js.map",
+    "static/js/2.a1a3683c.chunk.js": "/max-game/static/js/2.a1a3683c.chunk.js",
+    "static/js/2.a1a3683c.chunk.js.map": "/max-game/static/js/2.a1a3683c.chunk.js.map",
+    "static/js/3.7b9a46a7.chunk.js": "/max-game/static/js/3.7b9a46a7.chunk.js",
+    "static/js/3.7b9a46a7.chunk.js.map": "/max-game/static/js/3.7b9a46a7.chunk.js.map",
+    "index.html": "/max-game/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/max-game/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.a1a3683c.chunk.js.LICENSE.txt": "/max-game/static/js/2.a1a3683c.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/max-game/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bd2e79cb.js",
+    "static/js/2.a1a3683c.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.3b482c50.chunk.js"
+  ]
+}
