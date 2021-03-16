@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/maze-game/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/maze-game/static/js/main.35f537d3.chunk.js",
-    "main.js.map": "/maze-game/static/js/main.35f537d3.chunk.js.map",
-    "runtime-main.js": "/maze-game/static/js/runtime-main.f2bd132b.js",
-    "runtime-main.js.map": "/maze-game/static/js/runtime-main.f2bd132b.js.map",
-    "static/js/2.33d0dbf5.chunk.js": "/maze-game/static/js/2.33d0dbf5.chunk.js",
-    "static/js/2.33d0dbf5.chunk.js.map": "/maze-game/static/js/2.33d0dbf5.chunk.js.map",
-    "static/js/3.09d31d10.chunk.js": "/maze-game/static/js/3.09d31d10.chunk.js",
-    "static/js/3.09d31d10.chunk.js.map": "/maze-game/static/js/3.09d31d10.chunk.js.map",
+    "main.css": "/maze-game/static/css/main.0bce2580.chunk.css",
+    "main.js": "/maze-game/static/js/main.2730315d.chunk.js",
+    "main.js.map": "/maze-game/static/js/main.2730315d.chunk.js.map",
+    "runtime-main.js": "/maze-game/static/js/runtime-main.48c6ef31.js",
+    "runtime-main.js.map": "/maze-game/static/js/runtime-main.48c6ef31.js.map",
+    "static/js/2.320f7d0b.chunk.js": "/maze-game/static/js/2.320f7d0b.chunk.js",
+    "static/js/2.320f7d0b.chunk.js.map": "/maze-game/static/js/2.320f7d0b.chunk.js.map",
+    "static/js/3.94e1434b.chunk.js": "/maze-game/static/js/3.94e1434b.chunk.js",
+    "static/js/3.94e1434b.chunk.js.map": "/maze-game/static/js/3.94e1434b.chunk.js.map",
     "index.html": "/maze-game/index.html",
-    "static/css/main.9d5b29c0.chunk.css.map": "/maze-game/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.33d0dbf5.chunk.js.LICENSE.txt": "/maze-game/static/js/2.33d0dbf5.chunk.js.LICENSE.txt"
+    "static/css/main.0bce2580.chunk.css.map": "/maze-game/static/css/main.0bce2580.chunk.css.map",
+    "static/js/2.320f7d0b.chunk.js.LICENSE.txt": "/maze-game/static/js/2.320f7d0b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f2bd132b.js",
-    "static/js/2.33d0dbf5.chunk.js",
-    "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.35f537d3.chunk.js"
+    "static/js/runtime-main.48c6ef31.js",
+    "static/js/2.320f7d0b.chunk.js",
+    "static/css/main.0bce2580.chunk.css",
+    "static/js/main.2730315d.chunk.js"
   ]
 }
