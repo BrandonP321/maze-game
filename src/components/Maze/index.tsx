@@ -2,6 +2,7 @@ import React, { ReactElement, useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router';
 import { transpileModule } from 'typescript';
 import './index.scss';
+import { handleScreenTouch, handleScreenTouchEnd, handleSwipe } from './mobileControls'
 
 
 interface Props {
@@ -52,6 +53,30 @@ export default function Maze({ }: Props): ReactElement {
 
         // create event listener to move player
         window.addEventListener('keydown', handleKeyPress)
+
+        // create event listener for when user swipes screen on mobile device
+        document.addEventListener('touchstart', handleScreenTouch)
+        document.addEventListener('touchmove', handleSwipe)
+        document.addEventListener('touchend', e => {
+            const directionToMove = handleScreenTouchEnd(e)
+
+            if (!directionToMove) return
+
+            switch (directionToMove) {
+                case 'up':
+                    moveUp();
+                    break;
+                case 'down':
+                    moveDown();
+                    break;
+                case "right":
+                    moveRight();
+                    break;
+                case 'left':
+                    moveLeft();
+                    break;
+            }
+        })
     }, [])
 
     useEffect(() => {

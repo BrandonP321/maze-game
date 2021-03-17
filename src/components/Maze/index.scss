@@ -7,7 +7,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    .maze-wrapper-outer {    
+    @media screen and (max-width: 1000px) {
+        top: 0;
+        transform: translate(-50%, 0);
+    }
+
+    .maze-wrapper-outer {
         padding-top: 100%;
         border: 2px solid black;
 
