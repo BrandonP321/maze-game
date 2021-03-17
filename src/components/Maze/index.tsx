@@ -1,6 +1,8 @@
 import React, { ReactElement, useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router';
 import { transpileModule } from 'typescript';
-import './index.css';
+import './index.scss';
+
 
 interface Props {
 
@@ -26,7 +28,9 @@ interface cellProperties extends cellPositionProperties {
 }
 
 export default function Maze({ }: Props): ReactElement {
-    const [mazeWidth, setMazeWidth] = useState<number>(30); // height is same as width
+    const { difficulty } = useParams<any>()
+
+    const [mazeWidth, setMazeWidth] = useState<number>(difficulty === 'easy' ? 10 : difficulty === 'medium' ? 20 : 30); // height is same as width
     const [mazeCells, setMazeCellsState] = useState<any[]>([]);
     const mazeCellsRef = useRef<any[]>([])
     const setMazeCells = (data: any) => {
@@ -387,7 +391,6 @@ export default function Maze({ }: Props): ReactElement {
 
         // if end cell has not been visited, remove border above it to create a valid path
         if (!hasReachedEnd) {
-            console.log('changing end')
             const endCellIndex = mazeWidth ** 2 - 1
             const endCell = cells[endCellIndex];
             const cellAboveEnd = cells[endCellIndex - mazeWidth];
@@ -436,13 +439,13 @@ export default function Maze({ }: Props): ReactElement {
         }
     }
 
-    const getCellIndexByLocation = (location: { row: number, col: number }) => {
+    const getCellByLocation = (location: { row: number, col: number }) => {
         const cellIndex = (location.row - 1) * mazeWidth + location.col - 1
         return mazeCellsRef.current[cellIndex];
     }
 
     const moveUp = () => {
-        const cell = getCellIndexByLocation(playerLocationRef.current)
+        const cell = getCellByLocation(playerLocationRef.current)
 
         if (playerLocationRef.current.row === 1 || !cell.canMoveUp) return
 
@@ -450,7 +453,7 @@ export default function Maze({ }: Props): ReactElement {
     }
 
     const moveRight = () => {
-        const cell = getCellIndexByLocation(playerLocationRef.current)
+        const cell = getCellByLocation(playerLocationRef.current)
 
         if (playerLocationRef.current.col >= mazeWidth || !cell.canMoveRight) return
 
@@ -458,7 +461,7 @@ export default function Maze({ }: Props): ReactElement {
     }
 
     const moveLeft = () => {
-        const cell = getCellIndexByLocation(playerLocationRef.current)
+        const cell = getCellByLocation(playerLocationRef.current)
 
         if (playerLocationRef.current.col === 1 || !cell.canMoveLeft) return
 
@@ -466,7 +469,7 @@ export default function Maze({ }: Props): ReactElement {
     }
 
     const moveDown = () => {
-        const cell = getCellIndexByLocation(playerLocationRef.current)
+        const cell = getCellByLocation(playerLocationRef.current)
 
         if (playerLocationRef.current.row >= mazeWidth || !cell.canMoveDown) return
 
