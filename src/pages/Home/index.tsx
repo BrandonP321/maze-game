@@ -1,12 +1,7 @@
 import React, { ReactElement } from 'react'
-import { Link } from 'react-router-dom'
 import './index.scss'
 
-interface Props {
-    
-}
-
-export default function Home({}: Props): ReactElement {
+export default function Home(): ReactElement {
     return (
         <div className='home-page'>
             <h1>The Maze Game</h1>
