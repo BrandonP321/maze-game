@@ -357,7 +357,7 @@ export default function Maze({ setShowModal }: Props): ReactElement {
                     nextMoves.push(move);
                 }
             }
-            
+
             let randomMove;
             // if user has reached end
             if (hasReachedEnd) {
@@ -368,7 +368,7 @@ export default function Maze({ setShowModal }: Props): ReactElement {
                 // generate weighted random direction to move
                 randomMove = generateWeightedRandomMove(remainingMoves, nextMoves) // generates move based on weighted object of moves needed
             }
-            
+
             currentCell.hasBeenVisited = true;
             // if there are no possible moves
             if (nextMoves.length === 0) {
@@ -424,22 +424,22 @@ export default function Maze({ setShowModal }: Props): ReactElement {
         }
     }
 
-    
+
     const generateWeightedRandomMove = (remainingMoves: any, possibleMoves: any[]) => {
         let weightedArr = []
-        
+
         for (let move of possibleMoves) {
             // in the case that the remaining moves object has a value of 0, default that to 1
             let movesCount = remainingMoves[move] === 0 ? 1 : remainingMoves
 
             weightedArr.push(...new Array(movesCount).fill(move))
         }
-        
+
         // generate random index in weighted array
         const randomInt = Math.floor(Math.random() * weightedArr.length);
         return weightedArr[randomInt]
     }
-    
+
     const handleKeyPress = (e: KeyboardEvent) => {
         // return early if player icon has not been loaded in yet
         if (!playerIcon) return

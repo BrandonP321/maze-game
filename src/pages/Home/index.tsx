@@ -11,9 +11,9 @@ export default function Home({}: Props): ReactElement {
         <div className='home-page'>
             <h1>The Maze Game</h1>
             <div className='buttons'>
-                <Link to='/game/easy'>Easy</Link>
-                <Link to='/game/medium'>Medium</Link>
-                <Link to='/game/hard'>Hard</Link>
+                <a href='/game/easy'>Easy</a>
+                <a href='/game/medium'>Medium</a>
+                <a href='/game/hard'>Hard</a>
             </div>
         </div >
     )
