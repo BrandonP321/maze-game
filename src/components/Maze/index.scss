@@ -7,17 +7,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    @media screen and (max-width: 1000px) {
-        top: 0;
-        transform: translate(-50%, 0);
-    }
+    // overscroll-behavior: none;
 
     .maze-wrapper-outer {
         padding-top: 100%;
         border: 2px solid black;
 
         box-sizing: border-box;
-    
+        // overscroll-behavior: inherit;
+        
         .maze-wrapper-inner {
             position: absolute;
             top: 2px;
@@ -27,8 +25,11 @@
             display: flex;
             flex-wrap: wrap;
             // border: 1px solid black;
-    
+
+            // overscroll-behavior: inherit;
+            
             .maze-cell {
+                // overscroll-behavior: inherit;
                 background-color: #bbb;
                 box-sizing: border-box;
                 border-bottom: 2px solid black;
