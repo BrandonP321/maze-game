@@ -384,6 +384,16 @@ export default function Maze({ }: Props): ReactElement {
 
             visitedCells.push(currentIndex);
         }
+
+        // if end cell has not been visited, remove border above it to create a valid path
+        if (!hasReachedEnd) {
+            console.log('changing end')
+            const endCellIndex = mazeWidth ** 2 - 1
+            const endCell = cells[endCellIndex];
+            const cellAboveEnd = cells[endCellIndex - mazeWidth];
+            endCell.canMoveUp = true;
+            cellAboveEnd.canMoveDown = true;
+        }
     }
 
     
