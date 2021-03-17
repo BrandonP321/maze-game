@@ -6,7 +6,7 @@ import { handleScreenTouch, handleScreenTouchEnd, handleSwipe } from './mobileCo
 
 
 interface Props {
-
+    setShowModal: (bool: boolean) => void;
 }
 
 interface cellPositionProperties {
@@ -28,7 +28,7 @@ interface cellMoveProperties {
 interface cellProperties extends cellPositionProperties {
 }
 
-export default function Maze({ }: Props): ReactElement {
+export default function Maze({ setShowModal }: Props): ReactElement {
     const { difficulty } = useParams<any>()
 
     const [mazeWidth, setMazeWidth] = useState<number>(difficulty === 'easy' ? 10 : difficulty === 'medium' ? 20 : 30); // height is same as width
@@ -82,7 +82,7 @@ export default function Maze({ }: Props): ReactElement {
     useEffect(() => {
         // check if player has reached end when they move
         if (playerLocation.col === mazeWidth && playerLocation.row === mazeWidth) {
-            alert("You win")
+            setShowModal(true);
         }
     }, [playerLocation])
 

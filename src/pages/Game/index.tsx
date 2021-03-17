@@ -1,11 +1,15 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import Maze from '../../components/Maze'
+import Modal from '../../components/Modal'
 import './index.css'
 
 export default function Game(): ReactElement {
+    const [showModal, setShowModal] = useState<boolean>(false)
+
     return (
         <>
-            <Maze />
+            <Maze setShowModal={setShowModal}/>
+            <Modal show={showModal}/>
         </>
     )
 }
