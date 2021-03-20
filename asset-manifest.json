@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/maze-game/static/css/main.f424959d.chunk.css",
+    "main.css": "/maze-game/static/css/main.193c1ed2.chunk.css",
     "main.js": "/maze-game/static/js/main.a78438f8.chunk.js",
     "main.js.map": "/maze-game/static/js/main.a78438f8.chunk.js.map",
     "runtime-main.js": "/maze-game/static/js/runtime-main.571cd61e.js",
@@ -10,13 +10,13 @@
     "static/js/3.f72a88d8.chunk.js": "/maze-game/static/js/3.f72a88d8.chunk.js",
     "static/js/3.f72a88d8.chunk.js.map": "/maze-game/static/js/3.f72a88d8.chunk.js.map",
     "index.html": "/maze-game/index.html",
-    "static/css/main.f424959d.chunk.css.map": "/maze-game/static/css/main.f424959d.chunk.css.map",
+    "static/css/main.193c1ed2.chunk.css.map": "/maze-game/static/css/main.193c1ed2.chunk.css.map",
     "static/js/2.49cba4ef.chunk.js.LICENSE.txt": "/maze-game/static/js/2.49cba4ef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.571cd61e.js",
     "static/js/2.49cba4ef.chunk.js",
-    "static/css/main.f424959d.chunk.css",
+    "static/css/main.193c1ed2.chunk.css",
     "static/js/main.a78438f8.chunk.js"
   ]
 }
